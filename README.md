@@ -26,6 +26,7 @@ I will be adding more tips and commands to this repository over time, so be sure
         - [Display the 10 Largest Running Processes by Memory Usage](#display-the-10-largest-running-processes-by-memory-usage)
         - [Find and Delete Empty Files and Directories](#find-and-delete-empty-files-and-directories)
         - [Batch Rename Files](#batch-rename-files)
+    - [Efficiency](#efficiency)
     - [Contributing](#contributing) </br>
 A collection of useful terminal commands and tips.
 
@@ -230,6 +231,18 @@ mmv "*.jpg" "image_#1.jpg"
 
 To batch rename files, such as renaming all `.jpg` files to `image_1.jpg`, `image_2.jpg`, etc., you can use it.
 
+## Efficiency
+
+To streamline your workflow, you can create aliases for commonly used commands. Add these aliases to your .bashrc or .zshrc file:
+
+```bash
+alias ll='ls -lh'
+```
+This creates a shortcut ll to list files and directories in long format with human-readable sizes.
+```bash
+alias gs='git status'
+```
+ This creates a shortcut gs to check the status of your Git repository :)
 
 ## Contributing
 
