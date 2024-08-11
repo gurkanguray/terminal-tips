@@ -21,8 +21,13 @@ I will be adding more tips and commands to this repository over time, so be sure
     - [File Management and Searching](#file-management-and-searching)
         - [Sorting Files and Folders by Size](#sorting-files-and-folders-by-size)
         - [Find and Search Files with Specific Criteria](#find-and-search-files-with-specific-criteria)
-    - [Contributing](#contributing)
-
+        - [Comparing Files](#comparing-files)
+        - [View Last 100 Lines of a Log File](#view-last-100-lines-of-a-log-file)
+        - [Display the 10 Largest Running Processes by Memory Usage](#display-the-10-largest-running-processes-by-memory-usage)
+        - [Find and Delete Empty Files and Directories](#find-and-delete-empty-files-and-directories)
+        - [Batch Rename Files](#batch-rename-files)
+    - [Efficiency](#efficiency)
+    - [Contributing](#contributing) </br>
 A collection of useful terminal commands and tips.
 
 ## File Management and Searching
@@ -154,6 +159,90 @@ This command copies each file found by the search command to the
 - `--ignore-existing`: Skips copying files that already exist in the target directory.
 - You can modify the rsync options to suit your specific requirements. For example, you can use `--remove-source-files`
   to delete the source files after copying them.
+
+
+### Comparing Files
+
+To compare the contents of two files side by side and highlight their differences, use the following command:
+```bash
+diff -y file1.txt file2.txt
+```
+This command shows the differences between file1.txt and file2.txt side by side.
+
+- `diff`: The command used to compare files line by line.
+- `-y`: The option that displays the files side by side for easier comparison.
+
+This command is particularly useful for reviewing changes between two versions of a file or comparing the output of two similar files.
+
+### View Last 100 Lines of a Log File
+
+To view the most recent entries in a log file, you can use:
+
+```bash
+tail -n 100 /var/log/syslog
+```
+ - `tail`: The command used to output the end of files.
+- `-n 100`: Specifies that you want to view the last 100 lines of the file.
+- `/var/log/syslog`: Path to the log file. Replace this with the path to your specific log file!
+ 
+This command is useful for quickly reviewing the latest entries in a log file, which can help in debugging or monitoring system activity.
+
+### Display the 10 Largest Running Processes by Memory Usage
+
+To find the top 10 processes consuming the most **memory** on your system, use:
+
+```bash
+ps aux --sort=-%mem | head -n 10
+```
+ 
+- `ps`: Command used to display information about running processes.
+- `aux`: Shows detailed information about all running processes.
+- `--sort=-%mem`: Sorts the processes by memory usage in descending order.
+- `head`: Command used to display the beginning of files.
+- `-n 10`: Specifies that you want to see only the top 10 entries.
+
+These commands definitely help identify which processes are using the most memory, which can be useful for performance tuning! Well, they do wonders for me.
+
+### Find and Delete Empty Files and Directories
+
+To locate and remove empty files and directories within a specified directory, use:
+```bash 
+find /path/to/directory -empty -delete
+```
+
+- `find`: Command used to search for files and directories.
+- `/path/to/directory`: Path where the search should begin.
+- `-empty`: Matches empty files and directories.
+- `-delete`: Deletes the matched files and directories.
+
+This command is useful for cleaning up your filesystem by removing unnecessary empty files and directories.
+
+### Batch Rename Files
+To rename multiple files at once, such as changing all .jpg files to a new format, use:
+
+```bash
+mmv "*.jpg" "image_#1.jpg"
+```
+
+- `mmv`: Command used for batch renaming files.
+- `"*.jpg"`: Pattern to match all .jpg files.
+- `"image_#1.jpg"`: New name format where #1 is a placeholder for a sequential number.
+
+
+To batch rename files, such as renaming all `.jpg` files to `image_1.jpg`, `image_2.jpg`, etc., you can use it.
+
+## Efficiency
+
+To streamline your workflow, you can create aliases for commonly used commands. Add these aliases to your .bashrc or .zshrc file:
+
+```bash
+alias ll='ls -lh'
+```
+This creates a shortcut ll to list files and directories in long format with human-readable sizes.
+```bash
+alias gs='git status'
+```
+ This creates a shortcut gs to check the status of your Git repository :)
 
 ## Contributing
 
